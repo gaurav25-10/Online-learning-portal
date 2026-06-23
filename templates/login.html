@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block public_content %}
+<main class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <div class="feature-card p-4">
+        <h1 class="h3 fw-bold mb-3">Login</h1>
+        <form method="post" class="vstack gap-3">
+          <div><label class="form-label">Email</label><input class="form-control" type="email" name="email" required></div>
+          <div><label class="form-label">Password</label><input class="form-control" type="password" name="password" required></div>
+          <button class="btn btn-primary w-100">Login</button>
+        </form>
+        <p class="text-secondary small mt-3 mb-0">Admin: admin@portal.com / admin123</p>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+

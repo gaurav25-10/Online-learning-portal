@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% set title = "View Enrollments" %}
+{% set heading = "View Enrollments" %}
+{% block content %}
+<div class="feature-card p-4">
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead><tr><th>Student</th><th>Email</th><th>Course</th><th>Date</th></tr></thead>
+      <tbody>{% for row in enrollments %}<tr><td>{{ row.name }}</td><td>{{ row.email }}</td><td>{{ row.title }}</td><td>{{ row.enrolled_at }}</td></tr>{% endfor %}</tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+

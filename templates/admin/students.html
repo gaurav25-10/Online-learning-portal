@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% set title = "View Students" %}
+{% set heading = "View Students" %}
+{% block content %}
+<div class="feature-card p-4">
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Enrollments</th><th>Joined</th></tr></thead>
+      <tbody>{% for student in students %}<tr><td>{{ student.name }}</td><td>{{ student.email }}</td><td>{{ student.phone }}</td><td>{{ student.enrollments }}</td><td>{{ student.created_at }}</td></tr>{% endfor %}</tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% set title = "Quiz Result" %}
+{% set heading = "Quiz Result" %}
+{% block content %}
+<div class="feature-card p-4">
+  <h2 class="h4 fw-bold">{{ result.title }}</h2>
+  <p class="text-secondary">Completed on {{ result.completed_at }}</p>
+  <div class="row g-3 mb-4">
+    <div class="col-md-4"><div class="stat-card"><p class="text-secondary mb-1">Score</p><h3>{{ result.score }}/{{ result.total_questions }}</h3></div></div>
+    <div class="col-md-4"><div class="stat-card"><p class="text-secondary mb-1">Percentage</p><h3>{{ result.percentage }}%</h3></div></div>
+    <div class="col-md-4"><div class="stat-card"><p class="text-secondary mb-1">Status</p><h3 class="{{ 'text-success' if result.percentage >= 60 else 'text-danger' }}">{{ 'Passed' if result.percentage >= 60 else 'Try Again' }}</h3></div></div>
+  </div>
+  <div class="progress mb-3"><div class="progress-bar" style="width: {{ result.percentage }}%"></div></div>
+  {% if result.percentage >= 60 %}
+    <a class="btn btn-success" href="{{ url_for('student_certificate', course_id=result.course_id) }}"><i class="bi bi-award"></i> View Certificate</a>
+  {% else %}
+    <a class="btn btn-primary" href="{{ url_for('student_quiz', course_id=result.course_id) }}">Attempt Again</a>
+  {% endif %}
+</div>
+{% endblock %}
+

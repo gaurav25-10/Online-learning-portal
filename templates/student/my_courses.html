@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% set title = "My Courses" %}
+{% set heading = "My Courses" %}
+{% block content %}
+<div class="row g-4">
+  {% for course in courses %}
+  <div class="col-lg-6">
+    <div class="course-card p-4 h-100">
+      <div class="d-flex justify-content-between gap-3">
+        <div><span class="badge text-bg-light text-primary border">{{ course.category }}</span><h2 class="h5 fw-bold mt-2">{{ course.title }}</h2></div>
+        <small class="text-secondary">{{ course.enrolled_at }}</small>
+      </div>
+      <p class="text-secondary">{{ course.description }}</p>
+      <div class="d-flex flex-wrap gap-2">
+        {% if course.video_link %}<a class="btn btn-sm btn-outline-primary" target="_blank" href="{{ course.video_link }}"><i class="bi bi-play-circle"></i> Video</a>{% endif %}
+        {% if course.pdf_link %}<a class="btn btn-sm btn-outline-primary" target="_blank" href="{{ course.pdf_link }}"><i class="bi bi-file-earmark-pdf"></i> Notes</a>{% endif %}
+        <a class="btn btn-sm btn-primary" href="{{ url_for('student_quiz', course_id=course.id) }}"><i class="bi bi-question-circle"></i> Attempt Quiz</a>
+        {% if course.latest_percentage is not none %}<a class="btn btn-sm btn-outline-secondary" href="{{ url_for('student_result', course_id=course.id) }}">Result</a>{% endif %}
+        {% if course.latest_percentage and course.latest_percentage >= 60 %}<a class="btn btn-sm btn-success" href="{{ url_for('student_certificate', course_id=course.id) }}"><i class="bi bi-award"></i> Certificate</a>{% endif %}
+      </div>
+    </div>
+  </div>
+  {% else %}
+    <div class="col-12"><div class="alert alert-info">You have not enrolled in any courses yet.</div></div>
+  {% endfor %}
+</div>
+{% endblock %}
+

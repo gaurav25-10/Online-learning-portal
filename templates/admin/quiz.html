@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% set title = "Manage Quiz Questions" %}
+{% set heading = "Manage Quiz Questions" %}
+{% block content %}
+<div class="d-flex justify-content-end mb-3"><a class="btn btn-primary" href="{{ url_for('admin_quiz_form') }}"><i class="bi bi-plus-lg"></i> Add Question</a></div>
+<div class="feature-card p-4">
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead><tr><th>Course</th><th>Question</th><th>Correct</th><th>Actions</th></tr></thead>
+      <tbody>
+        {% for q in questions %}
+        <tr>
+          <td>{{ q.title }}</td><td>{{ q.question }}</td><td><span class="badge text-bg-primary">{{ q.correct_answer }}</span></td>
+          <td><a class="btn btn-sm btn-outline-primary" href="{{ url_for('admin_quiz_form', question_id=q.id) }}"><i class="bi bi-pencil"></i></a> <a class="btn btn-sm btn-outline-danger" data-confirm="Delete this question?" href="{{ url_for('admin_quiz_delete', question_id=q.id) }}"><i class="bi bi-trash"></i></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+

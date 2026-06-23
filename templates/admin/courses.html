@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% set title = "Manage Courses" %}
+{% set heading = "Manage Courses" %}
+{% block content %}
+<div class="d-flex justify-content-end mb-3"><a class="btn btn-primary" href="{{ url_for('admin_course_form') }}"><i class="bi bi-plus-lg"></i> Add Course</a></div>
+<div class="feature-card p-4">
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead><tr><th>ID</th><th>Course</th><th>Category</th><th>Video</th><th>PDF</th><th>Actions</th></tr></thead>
+      <tbody>
+        {% for course in courses %}
+        <tr>
+          <td>{{ course.id }}</td>
+          <td class="fw-semibold">{{ course.title }}</td>
+          <td>{{ course.category }}</td>
+          <td><span class="badge text-bg-{{ 'success' if course.video_link else 'secondary' }}">{{ 'Yes' if course.video_link else 'No' }}</span></td>
+          <td><span class="badge text-bg-{{ 'success' if course.pdf_link else 'secondary' }}">{{ 'Yes' if course.pdf_link else 'No' }}</span></td>
+          <td>
+            <a class="btn btn-sm btn-outline-primary" href="{{ url_for('admin_course_form', course_id=course.id) }}"><i class="bi bi-pencil"></i></a>
+            <a class="btn btn-sm btn-outline-danger" data-confirm="Delete this course?" href="{{ url_for('admin_course_delete', course_id=course.id) }}"><i class="bi bi-trash"></i></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+

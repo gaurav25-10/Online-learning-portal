@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% set title = "Certificate" %}
+{% set heading = "Certificate" %}
+{% block content %}
+<div class="certificate bg-white">
+  <p class="text-uppercase text-secondary fw-bold">Certificate of Completion</p>
+  <h2>Online Learning Portal</h2>
+  <p class="lead mt-4">This certificate is proudly presented to</p>
+  <h3 class="display-6 fw-bold text-primary">{{ certificate.name }}</h3>
+  <p class="lead">for successfully completing</p>
+  <h4 class="fw-bold">{{ certificate.title }}</h4>
+  <p class="mt-4">Completion Date: <strong>{{ certificate.completed_at[:10] }}</strong></p>
+  <p>Score: <strong>{{ certificate.percentage }}%</strong></p>
+  <div class="row mt-5">
+    <div class="col"><hr><small>Course Coordinator</small></div>
+    <div class="col"><hr><small>Portal Administrator</small></div>
+  </div>
+</div>
+<div class="text-center mt-4"><button class="btn btn-primary" onclick="window.print()"><i class="bi bi-printer"></i> Print Certificate</button></div>
+{% endblock %}

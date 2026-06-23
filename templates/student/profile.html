@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% set title = "My Profile" %}
+{% set heading = "My Profile" %}
+{% block content %}
+<div class="feature-card p-4">
+  <div class="row g-3">
+    <div class="col-md-6"><label class="form-label text-secondary">Name</label><div class="form-control bg-light">{{ current_user.name }}</div></div>
+    <div class="col-md-6"><label class="form-label text-secondary">Email</label><div class="form-control bg-light">{{ current_user.email }}</div></div>
+    <div class="col-md-6"><label class="form-label text-secondary">Phone</label><div class="form-control bg-light">{{ current_user.phone or "" }}</div></div>
+    <div class="col-md-6"><label class="form-label text-secondary">Joined</label><div class="form-control bg-light">{{ current_user.created_at }}</div></div>
+  </div>
+</div>
+{% endblock %}
+

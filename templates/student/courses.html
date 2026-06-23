@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% set title = "Browse Courses" %}
+{% set heading = "Browse Courses" %}
+{% block content %}
+<div class="row g-4">
+  {% for course in courses %}
+  <div class="col-lg-4 col-md-6">
+    <div class="course-card h-100 overflow-hidden">
+      {% if course.thumbnail %}
+        <img class="course-thumb" src="/uploads/{{ course.thumbnail }}" alt="{{ course.title }}">
+      {% else %}
+        <div class="course-thumb d-flex align-items-center justify-content-center text-primary fs-1"><i class="bi bi-play-circle"></i></div>
+      {% endif %}
+      <div class="p-3">
+        <span class="badge text-bg-light text-primary border">{{ course.category }}</span>
+        <h2 class="h5 fw-bold mt-2">{{ course.title }}</h2>
+        <p class="text-secondary small">{{ course.description }}</p>
+        {% if course.enrollment_id %}
+          <a class="btn btn-outline-primary w-100" href="{{ url_for('student_my_courses') }}">Already Enrolled</a>
+        {% else %}
+          <a class="btn btn-primary w-100" href="{{ url_for('student_enroll', course_id=course.id) }}">Enroll Now</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+

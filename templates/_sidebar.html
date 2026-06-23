@@ -1,0 +1,16 @@
+<aside class="sidebar">
+  <div class="sidebar-title">{{ session.get("role", "")|capitalize }} Panel</div>
+  {% if session.get("role") == "admin" %}
+    <a class="sidebar-link" href="{{ url_for('admin_dashboard') }}"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a>
+    <a class="sidebar-link" href="{{ url_for('admin_courses') }}"><i class="bi bi-book"></i><span>Courses</span></a>
+    <a class="sidebar-link" href="{{ url_for('admin_students') }}"><i class="bi bi-people"></i><span>Students</span></a>
+    <a class="sidebar-link" href="{{ url_for('admin_enrollments') }}"><i class="bi bi-clipboard-check"></i><span>Enrollments</span></a>
+    <a class="sidebar-link" href="{{ url_for('admin_quiz') }}"><i class="bi bi-question-circle"></i><span>Quiz</span></a>
+  {% else %}
+    <a class="sidebar-link" href="{{ url_for('student_dashboard') }}"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a>
+    <a class="sidebar-link" href="{{ url_for('student_profile') }}"><i class="bi bi-person"></i><span>Profile</span></a>
+    <a class="sidebar-link" href="{{ url_for('student_courses') }}"><i class="bi bi-search"></i><span>Browse Courses</span></a>
+    <a class="sidebar-link" href="{{ url_for('student_my_courses') }}"><i class="bi bi-collection-play"></i><span>My Courses</span></a>
+  {% endif %}
+</aside>
+

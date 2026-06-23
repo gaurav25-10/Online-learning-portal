@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% set title = "Student Dashboard" %}
+{% set heading = "Student Dashboard" %}
+{% block content %}
+<div class="row g-3 mb-4">
+  <div class="col-md-4"><div class="stat-card"><span class="icon"><i class="bi bi-book"></i></span><p class="text-secondary mb-1 mt-3">Available Courses</p><h2 class="fw-bold">{{ stats.courses }}</h2></div></div>
+  <div class="col-md-4"><div class="stat-card"><span class="icon"><i class="bi bi-collection-play"></i></span><p class="text-secondary mb-1 mt-3">My Courses</p><h2 class="fw-bold">{{ stats.my_courses }}</h2></div></div>
+  <div class="col-md-4"><div class="stat-card"><span class="icon"><i class="bi bi-award"></i></span><p class="text-secondary mb-1 mt-3">Certificates</p><h2 class="fw-bold">{{ stats.certificates }}</h2></div></div>
+</div>
+<div class="feature-card p-4">
+  <h2 class="h5 fw-bold mb-3">Recent Results</h2>
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead><tr><th>Course</th><th>Score</th><th>Percentage</th><th>Date</th></tr></thead>
+      <tbody>
+        {% for result in results %}
+        <tr><td>{{ result.title }}</td><td>{{ result.score }}/{{ result.total_questions }}</td><td>{{ result.percentage }}%</td><td>{{ result.completed_at }}</td></tr>
+        {% else %}<tr><td colspan="4" class="text-secondary">No quiz results yet.</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+

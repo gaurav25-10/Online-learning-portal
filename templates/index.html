@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block public_content %}
+<section class="hero">
+  <div class="container">
+    <span class="badge text-bg-light text-primary mb-3">Python Flask + SQLite</span>
+    <h1>Online Learning Portal</h1>
+    <p class="lead mt-3 mb-4">A complete BCA final year project for courses, enrollments, quizzes, results, and certificates.</p>
+    <a class="btn btn-light text-primary fw-semibold" href="{{ url_for('register') }}">Start Learning</a>
+    <a class="btn btn-outline-light ms-2" href="{{ url_for('login') }}">Login</a>
+  </div>
+</section>
+<main class="container py-5">
+  <div class="row g-4">
+    <div class="col-md-4"><div class="feature-card p-4 h-100"><i class="bi bi-mortarboard fs-2 text-primary"></i><h3 class="h5 mt-3">Learn Online</h3><p class="text-secondary mb-0">Enroll in courses and access videos and notes.</p></div></div>
+    <div class="col-md-4"><div class="feature-card p-4 h-100"><i class="bi bi-patch-question fs-2 text-primary"></i><h3 class="h5 mt-3">Attempt Quizzes</h3><p class="text-secondary mb-0">Submit quizzes and instantly view your percentage.</p></div></div>
+    <div class="col-md-4"><div class="feature-card p-4 h-100"><i class="bi bi-award fs-2 text-primary"></i><h3 class="h5 mt-3">Certificates</h3><p class="text-secondary mb-0">Earn certificates when your score is at least 60%.</p></div></div>
+  </div>
+</main>
+{% endblock %}
+
